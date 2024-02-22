@@ -14,7 +14,8 @@ describe('GET /products', function () {
   it('should return status 200 and the list of all products from database', async function () {
     // Arrange
     const mockedList: Product[] = productMocks.productListFromDb
-    const mockFindAllReturn = mockedList.map((product) => ProductModel.build(product))
+    // const mockFindAllReturn = mockedList.map((product) => ProductModel.build(product))
+    const mockFindAllReturn = ProductModel.bulkBuild(mockedList)
     sinon.stub(ProductModel, 'findAll').resolves(mockFindAllReturn)
 
     // Act
