@@ -8,3 +8,8 @@ export type User = {
   password: string;
   productIds?: Product[];
 };
+
+export type UserResponseType = {
+  username: string;
+  productIds: number[] | undefined;
+};
