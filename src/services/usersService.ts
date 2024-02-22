@@ -1,7 +1,7 @@
 import ProductModel from '../database/models/product.model';
 import UserModel from '../database/models/user.model';
 import { UserResponseType } from '../types/User';
-import { ServiceResponse } from '../types/serviceResponse';
+import { ServiceResponse } from '../types/ServiceResponse';
 
 const listUsers = async (): Promise<ServiceResponse<UserResponseType[]>> => {
   const userResponse = await UserModel.findAll({

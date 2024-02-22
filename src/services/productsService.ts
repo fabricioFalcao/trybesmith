@@ -3,7 +3,7 @@ import ProductModel, {
   ProductSequelizeModel,
 } from '../database/models/product.model';
 import { Product } from '../types/Product';
-import { ServiceResponse } from '../types/serviceResponse';
+import { ServiceResponse } from '../types/ServiceResponse';
 
 const registerProduct = async (
   productData: ProductInputtableTypes,
