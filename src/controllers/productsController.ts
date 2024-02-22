@@ -8,6 +8,12 @@ const registerProduct = async (req: Request, res: Response) => {
   return res.status(mapStatusHTTP(status)).json(data);
 };
 
+const listProducts = async (_req: Request, res: Response) => {
+  const { status, data } = await productsService.listProducts();
+  return res.status(mapStatusHTTP(status)).json(data);
+};
+
 export default {
   registerProduct,
+  listProducts,
 };

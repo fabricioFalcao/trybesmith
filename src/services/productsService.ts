@@ -1,4 +1,7 @@
-import ProductModel, { ProductInputtableTypes } from '../database/models/product.model';
+import ProductModel, {
+  ProductInputtableTypes,
+  ProductSequelizeModel,
+} from '../database/models/product.model';
 import { Product } from '../types/Product';
 import { ServiceResponse } from '../types/serviceResponse';
 
@@ -10,6 +13,13 @@ const registerProduct = async (
   return { status: 'CREATED', data: newProduct.dataValues };
 };
 
+const listProducts = async (): Promise<ServiceResponse<ProductSequelizeModel[]>> => {
+  const productsList = await ProductModel.findAll();
+
+  return { status: 'SUCCESSFUL', data: productsList };
+};
+
 export default {
   registerProduct,
+  listProducts,
 };
