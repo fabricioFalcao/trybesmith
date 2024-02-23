@@ -6,9 +6,6 @@ import { Token } from '../types/Token';
 import jwtTokenUtility from '../utils/jwtTokenUtility';
 
 const userLogin = async (login: Login): Promise<ServiceResponse<Token>> => {
-  if (!login.username || !login.password) {
-    return { status: 'BAD_REQUEST', data: { message: '"username" and "password" are required' } };
-  }
   const registeredUser = await UserModel.findOne({ where: { username: login.username } });
 
   if (!registeredUser || !bcrypt.compareSync(login.password, registeredUser.dataValues.password)) {
