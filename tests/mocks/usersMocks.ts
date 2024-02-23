@@ -15,6 +15,19 @@ const usersResponseList: UserResponseType[] = [
   },
 ];
 
+const userLogin = {
+  username: "Pitty",
+  password: "pittyveia",
+}
+
+const userFromDb = {
+  id: 1,
+  username: "Pitty",
+  vocation: "Anciã",
+  level: 99,
+  password: "$2a$10$bhWpFVUI63jHmOOZiVOF.OZFqIawFRinVgPDC/ZEkQc6dldLuPe9G",
+}
+
 const usersListFromDb: User[] = [
   {
     id: 1,
@@ -81,5 +94,7 @@ const usersWithProductIds = [
 export default {
   usersListFromDb,
   usersResponseList,
-  usersWithProductIds
+  usersWithProductIds,
+  userLogin,
+  userFromDb
 }

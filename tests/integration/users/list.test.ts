@@ -28,13 +28,8 @@ describe('GET /users', function () {
 
     sinon.stub(UserModel, 'findAll').resolves(usersMocks.usersWithProductIds as any)
 
-    console.log('Mocked users:', usersMocks.usersListFromDb);
-    console.log('Mocked users response:', usersMocks.usersResponseList);
-
     // Act
     const httpResponse = await chai.request(app).get('/users')
-
-    console.log('Actual response:', httpResponse.body);
 
     // Assert
     expect(httpResponse.status).to.be.equal(200);
