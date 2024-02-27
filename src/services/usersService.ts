@@ -6,8 +6,11 @@ import { ServiceResponse } from '../types/ServiceResponse';
 const listUsers = async (): Promise<ServiceResponse<UserResponseType[]>> => {
   const userResponse = await UserModel.findAll({
     attributes: ['username'],
-    include: [{ model: ProductModel, as: 'productIds', attributes: ['id'] }],
+    include: { model: ProductModel, as: 'productIds', attributes: ['id'] },
   });
+
+  // Lazy Loading
+  // await Promise.all(userResponse.map((user) => ProductModel.findAll({ where: { userId: user.id } })));
 
   const usersList = userResponse.map((user) => user.dataValues);
 

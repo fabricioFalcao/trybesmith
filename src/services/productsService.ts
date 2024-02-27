@@ -10,7 +10,7 @@ const registerProduct = async (
 ): Promise<ServiceResponse<Product>> => {
   const newProduct = await ProductModel.create(productData);
 
-  return { status: 'CREATED', data: newProduct.dataValues };
+  return { status: 'CREATED', data: newProduct as unknown as Product };
 };
 
 const listProducts = async (): Promise<ServiceResponse<ProductSequelizeModel[]>> => {

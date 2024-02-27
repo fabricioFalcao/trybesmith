@@ -22,11 +22,13 @@ describe('GET /users', function () {
     // const mockFindAllProductsReturn = ProductModel.bulkBuild(mockedProductsList);
     // sinon.stub(ProductModel, 'findAll').resolves(mockFindAllProductsReturn);
 
-    // const mockedUsersList: User[] = usersMocks.usersListFromDb
-    // const mockFindAllUsersReturn = await UserModel.bulkBuild(mockedUsersList)
-    // sinon.stub(UserModel, 'findAll').resolves(mockFindAllUsersReturn)
+    const mockedUsersList = usersMocks.usersWithProductIds
+    const mockFindAllUsersReturn = UserModel.bulkBuild(mockedUsersList as any, { include: { model: ProductModel, as: 'productIds', attributes: ['id'] } })
+    sinon.stub(UserModel, 'findAll').resolves(mockFindAllUsersReturn)
 
-    sinon.stub(UserModel, 'findAll').resolves(usersMocks.usersWithProductIds as any)
+    // sinon.stub(UserModel, 'findAll').resolves(usersMocks.usersWithProductIds as any)
+    // const xablau = UserModel.build({ username: 'Fabricio', level: 30, password: '1234', vocation: 'seila', id: 5 })
+    // xablau.
 
     // Act
     const httpResponse = await chai.request(app).get('/users')
